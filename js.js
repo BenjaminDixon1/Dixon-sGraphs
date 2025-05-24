@@ -1,4 +1,3 @@
-// charts.js
 const chartTypeSelect = document.getElementById('chartType');
 const dataInputs = document.getElementById('dataInputs');
 
@@ -44,6 +43,24 @@ const yValues = [];
 const xInputs = document.querySelectorAll('.x-val');
 const yInputs = document.querySelectorAll('.y-val');
 
+const xLabel = document.getElementById('xAxisLabel').value.trim();
+
+if (xLabel === '') {
+  if (chartTypeSelect.value === 'line') {
+    xLabel = 'Days Ago';
+  } else {
+    xLabel = 'X Axis';
+  }
+};
+
+
+const yLabel = document.getElementById('yAxisLabel').value.trim();
+
+if (yLabel === '') {
+  yLabel = 'Y Axis';
+};
+
+
 for (let i = 0; i < xInputs.length; i++) {
 const xRaw = xInputs[i].value.trim();
 const y = parseFloat(yInputs[i].value);
@@ -72,11 +89,16 @@ title: { text: 'Your Custom Chart' },
 tooltip: {},
 xAxis: {
   type: chartTypeSelect.value === 'line' ? 'value' : 'category',
-  name: chartTypeSelect.value === 'line' ? 'Days Ago' : '',
+  name: xLabel,
+  nameLocation: 'middle',
+  nameGap: 25,
   data: chartTypeSelect.value === 'bar' ? xValues : undefined
 },
 yAxis: {
-  type: 'value'
+  type: 'value',
+  name: yLabel,
+  nameLocation: 'middle',
+  nameGap: 35
 },
 series: [{
 name: 'Data',
