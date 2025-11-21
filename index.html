@@ -1,0 +1,47 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Custom Chart Builder</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  <link rel="stylesheet" href="css.css" />
+</head>
+<body>
+
+  <h2>Dixon's Charts</h2>
+
+  <div class="input-section">
+    <label for="chartType">Chart type:</label>
+    <select id="chartType" aria-label="Select chart type">
+      <option value="line">Line Chart</option>
+      <option value="bar">Bar Chart</option>
+    </select>
+  </div>
+
+  <div id="dataInputs" class="input-section" aria-live="polite" aria-relevant="additions"></div>
+
+  <div class="button-group">
+    <button id="addDataPointBtn" onclick="addDataPoint()">Add Data Point</button>
+    <button id="removeDataPointBtn" onclick="removeDataPoint()">Remove Data Point</button>
+  </div>
+
+  <div class="input-section axis-labels">
+    <label for="xAxisLabel">X-axis Label:</label>
+    <input type="text" id="xAxisLabel" placeholder="Enter X-axis label" aria-label="X-axis label" />
+
+    <label for="yAxisLabel">Y-axis Label:</label>
+    <input type="text" id="yAxisLabel" placeholder="Enter Y-axis label" aria-label="Y-axis label" />
+  </div>
+
+  <div id="errorMessage" class="error-message" role="alert" aria-live="assertive"></div>
+
+  <button id="drawChartBtn" onclick="drawChart()">Draw Chart</button>
+  <button id="deleteAllChartsBtn" onclick="deleteAllCharts()">Delete All Charts</button>
+
+  <div id="chartContainer"></div>
+
+  <script src="js.js"></script>
+</body>
+</html>
